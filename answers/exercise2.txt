@@ -1,0 +1,16 @@
+PS C:\Windows\system32> docker run -it ubuntu bash
+Unable to find image 'ubuntu:latest' locally
+latest: Pulling from library/ubuntu
+d9d511d19a19: Pull complete
+435bf5c20694: Pull complete
+2e7e55092090: Download complete
+Digest: sha256:c098726dd9b9733f3e885f8de0ef375206a311b0a317eadc40d347b1115fb944
+Status: Downloaded newer image for ubuntu:latest
+root@20b5b10be78e:/# mkdir -p /usr/src/app
+root@20b5b10be78e:/# touch /usr/src/app/index.js
+root@20b5b10be78e:/# ls -l /usr/src/app
+total 0
+-rw-r--r-- 1 root root 0 Oct 20 08:07 index.js
+root@20b5b10be78e:/# exit
+exit
+PS C:\Windows\system32>
