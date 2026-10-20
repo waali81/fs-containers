@@ -1,0 +1,6 @@
+root@20b5b10be78e:/# nano /usr/src/app/index.js
+root@20b5b10be78e:/# cat /usr/src/app/index.js
+console.log('Hello World')
+root@20b5b10be78e:/# exit
+exit
+PS C:\Windows\system32>
