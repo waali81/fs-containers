@@ -1,0 +1,86 @@
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+PS C:\Windows\System32> docker ps
+CONTAINER ID   IMAGE     COMMAND                  CREATED       STATUS       PORTS                                           NAMES
+3bc2ae86bac5   mongo     "docker-entrypoint.s…"   2 hours ago   Up 2 hours   0.0.0.0:3456->27017/tcp, [::]:3456->27017/tcp   todo-backend-mongo-1
+PS C:\Windows\System32> docker exec -it todo-backend-mongo-1 bash
+root@3bc2ae86bac5:/# mongosh -u root -p example
+Current Mongosh Log ID: 6ad9d18f82350b91e8a8c974
+Connecting to:          mongodb://<credentials>@127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.13.0
+Using MongoDB:          9.0.4
+Using Mongosh:          2.13.0
+
+For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/
+
+
+To help improve our products, pseudo-anonymous usage data is collected from interactive and agentic sessions only, and sent to MongoDB periodically (https://www.mongodb.com/legal/privacy-policy).
+You can opt-out by running the disableTelemetry() command.
+
+------
+   The server generated these startup warnings when booting
+   2026-10-22T07:19:48.229+00:00: For customers running the current memory allocator, we suggest changing the contents of the following sysfsFile
+   2026-10-22T07:19:48.229+00:00: For customers running the current memory allocator, we suggest changing the contents of the following sysfsFile
+   2026-10-22T07:19:48.229+00:00: We suggest setting the contents of sysfsFile to 0.
+   2026-10-22T07:19:48.229+00:00: vm.max_map_count is too low
+   2026-10-22T07:19:48.229+00:00: We suggest setting swappiness to 0 or 1, as swapping can cause performance problems.
+------
+
+test> use the_database
+switched to db the_database
+the_database> show collections
+todos
+the_database> db.todos.find({})
+[
+  {
+    _id: ObjectId('6ad9b8fe8d4db767cbc12e83'),
+    text: 'Write code',
+    done: true
+  },
+  {
+    _id: ObjectId('6ad9b8fe8d4db767cbc12e84'),
+    text: 'Learn about containers',
+    done: true
+  }
+]
+the_database> db.todos.insertOne({ text: "Increase the number of tools in my tool belt", done: false })
+{
+  acknowledged: true,
+  insertedId: ObjectId('6ad9d31882350b91e8a8c975')
+}
+the_database> db.todos.find({})
+[
+  {
+    _id: ObjectId('6ad9b8fe8d4db767cbc12e83'),
+    text: 'Write code',
+    done: true
+  },
+  {
+    _id: ObjectId('6ad9b8fe8d4db767cbc12e84'),
+    text: 'Learn about containers',
+    done: true
+  },
+  {
+    _id: ObjectId('6ad9d31882350b91e8a8c975'),
+    text: 'Increase the number of tools in my tool belt',
+    done: false
+  }
+]
+the_database> exit
+root@3bc2ae86bac5:/# exit
+exit
+
+What's next:
+    Try Docker Debug for seamless, persistent debugging tools in any container or image → docker debug todo-backend-mongo-1
+    Learn more at https://docs.docker.com/go/debug-cli/
+PS C:\Windows\System32>
+
+Postman testi:
+
+GET http://localhost:3000/todos
+
+[
+    {"_id":"6ad9b8fe8d4db767cbc12e83","text":"Write code","done":true},
+    {"_id":"6ad9b8fe8d4db767cbc12e84","text":"Learn about containers","done":true},
+    {"_id":"6ad9d31882350b91e8a8c975","text":"Increase the number of tools in my tool belt","done":false}
+]
