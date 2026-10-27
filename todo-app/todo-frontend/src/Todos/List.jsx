@@ -1,4 +1,4 @@
-import React from 'react'
+/* import React from 'react'
 
 const TodoList = ({ todos, deleteTodo, completeTodo }) => {
   const onClickDelete = (todo) => () => {
@@ -42,6 +42,30 @@ const TodoList = ({ todos, deleteTodo, completeTodo }) => {
           </div>
         )
       }).reduce((acc, cur) => [...acc, <hr />, cur], [])}
+    </>
+  )
+}
+
+export default TodoList
+ */
+
+
+import React from 'react'
+import Todo from './Todo'
+
+const TodoList = ({ todos, deleteTodo, completeTodo }) => {
+  return (
+    <>
+      {todos.map(todo => (
+        <React.Fragment key={todo._id}>
+          <hr />
+          <Todo
+            todo={todo}
+            deleteTodo={deleteTodo}
+            completeTodo={completeTodo}
+          />
+        </React.Fragment>
+      ))}
     </>
   )
 }
