@@ -8,6 +8,7 @@ COPY . .
 RUN npm ci
 RUN npm test
 
+#muuttujalle oletusarvo ja e2e-testi onnistui
 ARG VITE_BACKEND_URL=/api
 ENV VITE_BACKEND_URL=$VITE_BACKEND_URL
 
