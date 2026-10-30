@@ -29,7 +29,7 @@ test.describe('Todo App E2E Tests', () => {
     await page.waitForTimeout(500);
     
     // Verify the todo appears in the list
-    await expect(page.getByText(testTodoText)).toBeVisible({ timeout: 10000 });
+    await expect(page.getByText(testTodoText)).toBeVisible();
   });
 
   test('can toggle todo completion status', async ({ page }) => {
