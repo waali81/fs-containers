@@ -26,10 +26,10 @@ test.describe('Todo App E2E Tests', () => {
     await page.keyboard.press('Enter');
     
     // Wait a moment for the todo to be added
-    await page.waitForTimeout(10000);
+    await page.waitForTimeout(500);
     
     // Verify the todo appears in the list
-    await expect(page.getByText(testTodoText)).toBeVisible();
+    await expect(page.getByText(testTodoText)).toBeVisible({ timeout: 10000 });
   });
 
   test('can toggle todo completion status', async ({ page }) => {
@@ -39,7 +39,7 @@ test.describe('Todo App E2E Tests', () => {
     
     await todoInput.fill(testTodoText);
     await page.keyboard.press('Enter');
-    await page.waitForTimeout(10000);
+    await page.waitForTimeout(500);
     
     // Find and click the checkbox or completion button
     const todoItem = page.locator(`text=${testTodoText}`).locator('..');
